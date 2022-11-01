@@ -4,6 +4,7 @@
 #include "./ui_mainwindow.h"
 #include "filetreeview.h"
 #include "gittreeview.h"
+#include "homepagewidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,19 +12,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QSplitter *baseSplitter = new QSplitter(Qt::Horizontal);
-
     QSplitter *sidebarSplitter = new QSplitter(Qt::Vertical);
     FileTreeView *fileTreeView = new FileTreeView();
     GitTreeView *gitTreeView = new GitTreeView();
+    sidebarSplitter->addWidget(fileTreeView);
+    sidebarSplitter->addWidget(gitTreeView);
 
     QSplitter *mainSplitter = new QSplitter(Qt::Vertical);
+    HomepageWidget *homepageWidget = new HomepageWidget(this);
+    mainSplitter->addWidget(homepageWidget);
 
+    QSplitter *baseSplitter = new QSplitter(Qt::Horizontal);
     baseSplitter->addWidget(sidebarSplitter);
     baseSplitter->addWidget(mainSplitter);
 
-    sidebarSplitter->addWidget(fileTreeView);
-    sidebarSplitter->addWidget(gitTreeView);
     this->setCentralWidget(baseSplitter);
 }
 

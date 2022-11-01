@@ -23,6 +23,9 @@ set(PROJECT_SOURCES
         src/filetreeview.cpp
         src/gittreeview.h
         src/gittreeview.cpp
+        src/homepagewidget.h
+        src/homepagewidget.cpp
+        src/homepagewidget.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
