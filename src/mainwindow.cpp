@@ -12,21 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QSplitter *sidebarSplitter = new QSplitter(Qt::Vertical);
-    FileTreeView *fileTreeView = new FileTreeView();
-    GitTreeView *gitTreeView = new GitTreeView();
-    sidebarSplitter->addWidget(fileTreeView);
-    sidebarSplitter->addWidget(gitTreeView);
-
-    QSplitter *mainSplitter = new QSplitter(Qt::Vertical);
-    HomepageWidget *homepageWidget = new HomepageWidget(this);
-    mainSplitter->addWidget(homepageWidget);
-
-    QSplitter *baseSplitter = new QSplitter(Qt::Horizontal);
-    baseSplitter->addWidget(sidebarSplitter);
-    baseSplitter->addWidget(mainSplitter);
-
-    this->setCentralWidget(baseSplitter);
+    // Stub
+    ui->fileTreeView->setProjectPath("../Pide");
 }
 
 MainWindow::~MainWindow()

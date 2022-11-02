@@ -1,6 +1,7 @@
 #include "gittreeview.h"
 
-GitTreeView::GitTreeView()
+GitTreeView::GitTreeView(QWidget *parent)
+    : QTreeView(parent)
 {
 
 }

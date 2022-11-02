@@ -6,7 +6,7 @@
 class GitTreeView : public QTreeView
 {
 public:
-    GitTreeView();
+    GitTreeView(QWidget *parent = nullptr);
 };
 
 #endif // GITTREEVIEW_H
