@@ -6,7 +6,17 @@
 class FileTreeView : public QTreeView
 {
 public:
-    FileTreeView();
+    FileTreeView(QWidget *parent = nullptr);
+
+public:
+    void setProjectPath(QString projectPath);
+
+private:
+    void createControls();
+    void createModel();
+
+private:
+    QString projectPath_;
 };
 
 #endif // FILETREEVIEW_H
