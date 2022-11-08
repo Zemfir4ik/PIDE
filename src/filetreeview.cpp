@@ -13,6 +13,11 @@ void FileTreeView::createControls()
     this->createModel();
 }
 
+const QString& FileTreeView::getProjectPath() const
+{
+    return this->projectPath_;
+}
+
 void FileTreeView::setProjectPath(QString projectPath)
 {
     this->projectPath_ = projectPath;

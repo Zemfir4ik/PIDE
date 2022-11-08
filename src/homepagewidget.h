@@ -16,7 +16,11 @@ public:
     ~HomepageWidget();
 
 private:
+    void openProject();
     void paintEvent(QPaintEvent* event) override;
+
+signals:
+    void projectOpened(const QString& path);
 
 private:
     Ui::HomepageWidget *ui;

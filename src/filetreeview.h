@@ -9,6 +9,7 @@ public:
     FileTreeView(QWidget *parent = nullptr);
 
 public:
+    const QString& getProjectPath() const;
     void setProjectPath(QString projectPath);
 
 private:
