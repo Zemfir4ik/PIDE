@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SidebarWidget</class>
+ <widget class="QWidget" name="SidebarWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>526</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="baseLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="sidebarSplitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="opaqueResize">
+      <bool>false</bool>
+     </property>
+     <property name="handleWidth">
+      <number>0</number>
+     </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
+     <widget class="SidebarHeaderWidget" name="fileHeaderWidget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+     <widget class="FileTreeView" name="fileTreeView">
+      <property name="styleSheet">
+       <string notr="true">color: #ffffff;</string>
+      </property>
+     </widget>
+     <widget class="SidebarHeaderWidget" name="gitHeaderWidget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+     <widget class="GitTreeView" name="gitTreeView">
+      <property name="styleSheet">
+       <string notr="true">color: #ffffff;</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FileTreeView</class>
+   <extends>QTreeView</extends>
+   <header>src/filetreeview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SidebarHeaderWidget</class>
+   <extends>QWidget</extends>
+   <header>src/sidebarheaderwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>GitTreeView</class>
+   <extends>QTreeView</extends>
+   <header>src/gittreeview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

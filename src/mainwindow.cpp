@@ -1,4 +1,4 @@
-#include <QSplitter>
+#include <QDir>
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
@@ -12,22 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    if (ui->fileTreeView->getProjectPath().isEmpty()) {
-        ui->fileTreeView->hide();
-        ui->gitTreeView->hide();
-    }
-
-    this->connect(ui->homepageWidget,
-                  SIGNAL(projectOpened(const QString&)),
-                  this,
-                  SLOT(openProject(const QString&)));
-}
-
-void MainWindow::openProject(const QString &path)
-{
-    ui->fileTreeView->setProjectPath(path);
-    ui->fileTreeView->show();
-    ui->gitTreeView->show();
+    this->connect(ui->homepageWidget, SIGNAL(projectOpened(const QString&)),
+                  ui->sidebarWidget, SLOT(openProject(const QString&)));
 }
 
 MainWindow::~MainWindow()

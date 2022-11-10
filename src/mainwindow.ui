@@ -14,7 +14,10 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="styleSheet">
+    <string notr="true">background-color: #202026;</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -32,36 +35,23 @@
     </property>
     <item>
      <widget class="QSplitter" name="baseSplitter">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="handleWidth">
        <number>0</number>
       </property>
-      <widget class="QSplitter" name="sidebarSplitter">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="handleWidth">
-        <number>0</number>
-       </property>
-       <widget class="FileTreeView" name="fileTreeView">
-        <property name="styleSheet">
-         <string notr="true">background-color: #202026;
-color: white;</string>
-        </property>
-       </widget>
-       <widget class="GitTreeView" name="gitTreeView"/>
-      </widget>
-      <widget class="QSplitter" name="mainSplitter">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="handleWidth">
-        <number>0</number>
-       </property>
-       <widget class="HomepageWidget" name="homepageWidget" native="true"/>
-      </widget>
+      <property name="childrenCollapsible">
+       <bool>false</bool>
+      </property>
+      <widget class="SidebarWidget" name="sidebarWidget" native="true"/>
+      <widget class="HomepageWidget" name="homepageWidget" native="true"/>
      </widget>
     </item>
    </layout>
@@ -80,19 +70,15 @@ color: white;</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>FileTreeView</class>
-   <extends>QTreeView</extends>
-   <header>src/filetreeview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>GitTreeView</class>
-   <extends>QTreeView</extends>
-   <header>src/gittreeview.h</header>
-  </customwidget>
-  <customwidget>
    <class>HomepageWidget</class>
    <extends>QWidget</extends>
    <header>src/homepagewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SidebarWidget</class>
+   <extends>QWidget</extends>
+   <header>src/sidebarwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

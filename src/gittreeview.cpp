@@ -3,5 +3,4 @@
 GitTreeView::GitTreeView(QWidget *parent)
     : QTreeView(parent)
 {
-
 }

@@ -15,9 +15,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-public slots:
-    void openProject(const QString& path);
-
 private:
     void createControls();
 

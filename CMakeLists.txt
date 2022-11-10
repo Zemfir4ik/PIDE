@@ -26,6 +26,13 @@ set(PROJECT_SOURCES
         src/homepagewidget.h
         src/homepagewidget.cpp
         src/homepagewidget.ui
+        src/sidebarheaderwidget.h
+        src/sidebarheaderwidget.cpp
+        src/sidebarheaderwidget.ui
+        src/sidebarwidget.h
+        src/sidebarwidget.cpp
+        src/sidebarwidget.ui
+        resources/icons.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
