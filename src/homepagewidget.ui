@@ -137,6 +137,10 @@ QPushButton:hover {
              <property name="text">
               <string>Open Project</string>
              </property>
+             <property name="icon">
+              <iconset resource="../resources/icons.qrc">
+               <normaloff>:/file.png</normaloff>:/file.png</iconset>
+             </property>
             </widget>
            </item>
            <item>
@@ -191,6 +195,8 @@ QPushButton:hover {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources/icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
