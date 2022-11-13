@@ -17,6 +17,7 @@ public:
 
 private:
     void openProject();
+    void createProject();
     void paintEvent(QPaintEvent *event) override;
 
 signals:

@@ -2,6 +2,7 @@
 <RCC version="1.0">
     <qresource prefix="/">
         <file alias="file.png">icons/file.png</file>
+        <file alias="plus.png">icons/plus.png</file>
         <file alias="angle-right.png">icons/angle-right.png</file>
         <file alias="angle-down.png">icons/angle-down.png</file>
     </qresource>

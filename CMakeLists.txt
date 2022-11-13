@@ -32,6 +32,9 @@ set(PROJECT_SOURCES
         src/sidebarwidget.h
         src/sidebarwidget.cpp
         src/sidebarwidget.ui
+        src/createprojectdialog.h
+        src/createprojectdialog.cpp
+        src/createprojectdialog.ui
         resources/icons.qrc
 )
 
