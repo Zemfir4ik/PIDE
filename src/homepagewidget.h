@@ -17,10 +17,10 @@ public:
 
 private:
     void openProject();
-    void paintEvent(QPaintEvent* event) override;
+    void paintEvent(QPaintEvent *event) override;
 
 signals:
-    void projectOpened(const QString& path);
+    void projectOpened(const QString &path);
 
 private:
     Ui::HomepageWidget *ui;

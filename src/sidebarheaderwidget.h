@@ -16,7 +16,7 @@ public:
     ~SidebarHeaderWidget();
 
 public:
-    void setHeaderTitle(const QString& title);
+    void setHeaderTitle(const QString &title);
 
 private:
     void paintEvent(QPaintEvent *);

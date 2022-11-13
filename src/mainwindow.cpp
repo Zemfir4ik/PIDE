@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->connect(ui->homepageWidget, SIGNAL(projectOpened(const QString&)),
-                  ui->sidebarWidget, SLOT(openProject(const QString&)));
+    this->connect(ui->homepageWidget, SIGNAL(projectOpened(const QString &)),
+                  ui->sidebarWidget, SLOT(openProject(const QString &)));
 }
 
 MainWindow::~MainWindow()

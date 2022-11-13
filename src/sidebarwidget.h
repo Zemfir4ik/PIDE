@@ -17,7 +17,7 @@ public:
     ~SidebarWidget();
 
 public slots:
-    void openProject(const QString& path);
+    void openProject(const QString &path);
     void expandSidebarProject(bool expand);
     void expandSidebarGit(bool expand);
 

@@ -62,7 +62,7 @@ void SidebarWidget::expandSidebarGit(bool expand)
     expandSidebarWidget(expand, kGitTreeViewIndex);
 }
 
-void SidebarWidget::openProject(const QString& path)
+void SidebarWidget::openProject(const QString &path)
 {
     ui->fileHeaderWidget->setHeaderTitle(QDir(path).dirName());
     ui->fileTreeView->setProjectPath(path);

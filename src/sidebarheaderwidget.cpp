@@ -18,7 +18,7 @@ SidebarHeaderWidget::~SidebarHeaderWidget()
     delete ui;
 }
 
-void SidebarHeaderWidget::setHeaderTitle(const QString& title)
+void SidebarHeaderWidget::setHeaderTitle(const QString &title)
 {
     ui->projectLabel->setText(title);
 }
