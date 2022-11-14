@@ -24,6 +24,7 @@ public slots:
     void setProjectName(const QString &name);
 
 private:
+    void createControls();
     void connectControls();
     void selectProjectPath();
     void updateProjectPath();

@@ -9,14 +9,19 @@ CreateProjectDialog::CreateProjectDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->buttonBox->button(ui->buttonBox->Ok)->setDisabled(true);
-    this->updateProjectPath();
+    this->createControls();
     this->connectControls();
 }
 
 CreateProjectDialog::~CreateProjectDialog()
 {
     delete ui;
+}
+
+void CreateProjectDialog::createControls()
+{
+    ui->buttonBox->button(ui->buttonBox->Ok)->setDisabled(true);
+    this->updateProjectPath();
 }
 
 void CreateProjectDialog::connectControls()
@@ -45,7 +50,8 @@ void CreateProjectDialog::setProjectName(const QString &name)
 
 void CreateProjectDialog::selectProjectPath()
 {
-    QString path = QFileDialog::getExistingDirectory(this, "Select Project Directory");
+    QString path = QFileDialog::getExistingDirectory(
+                this, "Select Project Directory", QDir::homePath());
 
     if (!path.isEmpty()) {
         projectParentDirPath_ = path;
