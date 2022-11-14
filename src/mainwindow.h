@@ -17,6 +17,12 @@ public:
 
 private:
     void createControls();
+    void connectControls();
+    void openProject();
+    void createProject();
+
+signals:
+    void projectOpened(const QString &);
 
 private:
     Ui::MainWindow *ui;

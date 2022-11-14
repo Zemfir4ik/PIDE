@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "projecthandler.h"
+
 namespace Ui {
 class HomepageWidget;
 }
@@ -16,12 +18,11 @@ public:
     ~HomepageWidget();
 
 private:
-    void openProject();
-    void createProject();
     void paintEvent(QPaintEvent *event) override;
 
 signals:
-    void projectOpened(const QString &path);
+    void projectOpenRequested();
+    void projectCreationRequested();
 
 private:
     Ui::HomepageWidget *ui;

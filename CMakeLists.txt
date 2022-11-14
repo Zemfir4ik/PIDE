@@ -35,6 +35,8 @@ set(PROJECT_SOURCES
         src/createprojectdialog.h
         src/createprojectdialog.cpp
         src/createprojectdialog.ui
+        src/projecthandler.h
+        src/projecthandler.cpp
         resources/icons.qrc
 )
 
