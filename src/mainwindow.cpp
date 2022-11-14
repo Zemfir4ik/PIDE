@@ -16,6 +16,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::updateWindowTitleByProjectPath(const QString &path)
+{
+    if (path.isEmpty()) {
+        this->setWindowTitle("PIDE");
+    } else {
+        QString title = QString("PIDE | %1").arg(QDir(path).dirName());
+        this->setWindowTitle(title);
+    }
+}
+
 void MainWindow::connectControls()
 {
     this->connect(ui->actionOpenProject, &QAction::triggered,
@@ -26,6 +36,9 @@ void MainWindow::connectControls()
                   this, &MainWindow::openProject);
     this->connect(ui->homepageWidget, &HomepageWidget::projectCreationRequested,
                   this, &MainWindow::createProject);
+
+    this->connect(this, SIGNAL(projectOpened(const QString &)),
+                  this, SLOT(updateWindowTitleByProjectPath(const QString &)));
     this->connect(this, SIGNAL(projectOpened(const QString &)),
                   ui->sidebarWidget, SLOT(openProject(const QString &)));
 }
