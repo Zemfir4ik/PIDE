@@ -41,7 +41,6 @@ void CreateProjectDialog::setProjectName(const QString &name)
 {
     projectName_ = name;
     this->updateProjectPath();
-    ui->buttonBox->button(ui->buttonBox->Ok)->setDisabled(name.isEmpty());
 }
 
 void CreateProjectDialog::selectProjectPath()
@@ -58,4 +57,7 @@ void CreateProjectDialog::updateProjectPath()
 {
     QDir parent(projectParentDirPath_);
     ui->projectPathEdit->setText(parent.filePath(projectName_));
+
+    bool bIsPathValid = !projectName_.isEmpty() && !parent.exists(projectName_);
+    ui->buttonBox->button(ui->buttonBox->Ok)->setEnabled(bIsPathValid);
 }
