@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "projecthandler.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -28,6 +30,6 @@ signals:
 
 private:
     Ui::MainWindow *ui;
-    QString projectPath_;
+    ProjectHandler *handler_;
 };
 #endif // MAINWINDOW_H

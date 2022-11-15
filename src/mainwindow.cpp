@@ -15,10 +15,12 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete handler_;
 }
 
 void MainWindow::createControls()
 {
+    handler_ = new ProjectHandler(this);
     ui->sidebarWidget->hide();
 }
 
@@ -36,32 +38,24 @@ void MainWindow::connectControls()
 
 void MainWindow::openProject()
 {
-    ProjectHandler handler(this);
-    QString path = handler.openProject();
-
-    if (!path.isEmpty()) {
-        projectPath_ = path;
-        this->updateProject();
-    }
+    handler_->openProject();
+    this->updateProject();
 }
 
 void MainWindow::createProject()
 {
-    ProjectHandler handler(this);
-    QString path = handler.createProject();
-
-    if (!path.isEmpty()) {
-        projectPath_ = path;
-        this->updateProject();
-    }
+    handler_->createProject();
+    this->updateProject();
 }
 
 void MainWindow::updateProject()
 {
-    if (projectPath_.isEmpty()) {
+    QString projectPath = handler_->projectPath();
+
+    if (projectPath.isEmpty()) {
         ui->sidebarWidget->hide();
     } else {
-        ui->sidebarWidget->setProjectPath(projectPath_);
+        ui->sidebarWidget->setProjectPath(projectPath);
         ui->sidebarWidget->show();
     }
 
@@ -70,10 +64,12 @@ void MainWindow::updateProject()
 
 void MainWindow::updateWindowTitle()
 {
-    if (projectPath_.isEmpty()) {
+    QString projectPath = handler_->projectPath();
+
+    if (projectPath.isEmpty()) {
         this->setWindowTitle("PIDE");
     } else {
-        QString title = QString("PIDE | %1").arg(QDir(projectPath_).dirName());
+        QString title = QString("PIDE | %1").arg(QDir(projectPath).dirName());
         this->setWindowTitle(title);
     }
 }

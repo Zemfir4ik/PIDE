@@ -10,12 +10,22 @@ ProjectHandler::ProjectHandler(QWidget *parent)
 
 }
 
-QString ProjectHandler::openProject()
+QString ProjectHandler::projectPath() const
 {
-    return QFileDialog::getExistingDirectory(this->parent_, "Open Project");
+    return projectPath_;
 }
 
-QString ProjectHandler::createProject()
+void ProjectHandler::openProject()
+{
+    QString path = QFileDialog::getExistingDirectory(
+                this->parent_, "Open Project",
+                projectPath_.isEmpty() ? QDir::homePath() : projectPath_);
+
+    if (!path.isEmpty())
+        projectPath_ = path;
+}
+
+void ProjectHandler::createProject()
 {
     int ret;
     QString path;
@@ -31,5 +41,6 @@ QString ProjectHandler::createProject()
             path = parent.filePath(projectName);
     }
 
-    return path;
+    if (!path.isEmpty())
+        projectPath_ = path;
 }
