@@ -1,5 +1,3 @@
-#include <QFileSystemModel>
-
 #include "filetreeview.h"
 
 FileTreeView::FileTreeView(QWidget *parent)
@@ -8,36 +6,21 @@ FileTreeView::FileTreeView(QWidget *parent)
     this->createControls();
 }
 
+void FileTreeView::setProjectPath(const QString& path)
+{
+    QModelIndex index = model_->index(path);
+
+    model_->setRootPath(path);
+    this->setRootIndex(index);
+}
+
 void FileTreeView::createControls()
 {
-    this->createModel();
-}
+    model_ = new QFileSystemModel(this);
+    model_->setReadOnly(false);
+    this->setModel(model_);
 
-const QString& FileTreeView::getProjectPath() const
-{
-    return this->projectPath_;
-}
-
-void FileTreeView::setProjectPath(QString projectPath)
-{
-    this->projectPath_ = projectPath;
-    this->createModel();
-}
-
-void FileTreeView::createModel()
-{
-    QModelIndex index;
-    QFileSystemModel *model = new QFileSystemModel(this);
-
-    model->setReadOnly(false);
-    model->setRootPath(this->projectPath_);
-    this->setModel(model);
-
-    index = model->index(this->projectPath_);
-    this->setRootIndex(index);
-
-    // We need only "Name" column
-    for (int i = 1; i < model->columnCount(); ++i)
+    for (int i = 1; i < model_->columnCount(); ++i)
         this->hideColumn(i);
 
     this->setHeaderHidden(true);

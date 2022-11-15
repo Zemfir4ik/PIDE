@@ -2,6 +2,7 @@
 #define FILETREEVIEW_H
 
 #include <QTreeView>
+#include <QFileSystemModel>
 
 class FileTreeView : public QTreeView
 {
@@ -9,15 +10,13 @@ public:
     FileTreeView(QWidget *parent = nullptr);
 
 public:
-    const QString &getProjectPath() const;
-    void setProjectPath(QString projectPath);
+    void setProjectPath(const QString& path);
 
 private:
     void createControls();
-    void createModel();
 
 private:
-    QString projectPath_;
+    QFileSystemModel *model_;
 };
 
 #endif // FILETREEVIEW_H

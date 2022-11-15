@@ -61,7 +61,7 @@ void MainWindow::updateProject()
     if (projectPath_.isEmpty()) {
         ui->sidebarWidget->hide();
     } else {
-        ui->sidebarWidget->updateProject(projectPath_);
+        ui->sidebarWidget->setProjectPath(projectPath_);
         ui->sidebarWidget->show();
     }
 
