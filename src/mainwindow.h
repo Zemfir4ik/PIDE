@@ -15,19 +15,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-public slots:
-    void updateWindowTitleByProjectPath(const QString &path);
-
 private:
     void createControls();
     void connectControls();
     void openProject();
     void createProject();
+    void updateProject();
+    void updateWindowTitle();
 
 signals:
     void projectOpened(const QString &);
 
 private:
     Ui::MainWindow *ui;
+    QString projectPath_;
 };
 #endif // MAINWINDOW_H

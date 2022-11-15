@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->createControls();
     this->connectControls();
 }
 
@@ -16,14 +17,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::updateWindowTitleByProjectPath(const QString &path)
+void MainWindow::createControls()
 {
-    if (path.isEmpty()) {
-        this->setWindowTitle("PIDE");
-    } else {
-        QString title = QString("PIDE | %1").arg(QDir(path).dirName());
-        this->setWindowTitle(title);
-    }
+    ui->sidebarWidget->hide();
 }
 
 void MainWindow::connectControls()
@@ -36,11 +32,6 @@ void MainWindow::connectControls()
                   this, &MainWindow::openProject);
     this->connect(ui->homepageWidget, &HomepageWidget::projectCreationRequested,
                   this, &MainWindow::createProject);
-
-    this->connect(this, SIGNAL(projectOpened(const QString &)),
-                  this, SLOT(updateWindowTitleByProjectPath(const QString &)));
-    this->connect(this, SIGNAL(projectOpened(const QString &)),
-                  ui->sidebarWidget, SLOT(openProject(const QString &)));
 }
 
 void MainWindow::openProject()
@@ -48,8 +39,10 @@ void MainWindow::openProject()
     ProjectHandler handler(this);
     QString path = handler.openProject();
 
-    if (!path.isEmpty())
-        emit projectOpened(path);
+    if (!path.isEmpty()) {
+        projectPath_ = path;
+        this->updateProject();
+    }
 }
 
 void MainWindow::createProject()
@@ -57,6 +50,30 @@ void MainWindow::createProject()
     ProjectHandler handler(this);
     QString path = handler.createProject();
 
-    if (!path.isEmpty())
-        emit projectOpened(path);
+    if (!path.isEmpty()) {
+        projectPath_ = path;
+        this->updateProject();
+    }
+}
+
+void MainWindow::updateProject()
+{
+    if (projectPath_.isEmpty()) {
+        ui->sidebarWidget->hide();
+    } else {
+        ui->sidebarWidget->updateProject(projectPath_);
+        ui->sidebarWidget->show();
+    }
+
+    this->updateWindowTitle();
+}
+
+void MainWindow::updateWindowTitle()
+{
+    if (projectPath_.isEmpty()) {
+        this->setWindowTitle("PIDE");
+    } else {
+        QString title = QString("PIDE | %1").arg(QDir(projectPath_).dirName());
+        this->setWindowTitle(title);
+    }
 }

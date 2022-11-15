@@ -17,9 +17,11 @@ public:
     ~SidebarWidget();
 
 public slots:
-    void openProject(const QString &path);
     void expandSidebarProject(bool expand);
     void expandSidebarGit(bool expand);
+
+public:
+    void updateProject(const QString &path);
 
 private:
     const int kFileTreeViewIndex = 1;

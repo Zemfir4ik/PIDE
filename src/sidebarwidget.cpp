@@ -20,13 +20,6 @@ SidebarWidget::~SidebarWidget()
 
 void SidebarWidget::createControls()
 {
-    if (ui->fileTreeView->getProjectPath().isEmpty()) {
-        ui->fileHeaderWidget->hide();
-        ui->fileTreeView->hide();
-        ui->gitHeaderWidget->hide();
-        ui->gitTreeView->hide();
-    }
-
     ui->sidebarSplitter->setCollapsible(this->kFileTreeViewIndex, true);
     ui->sidebarSplitter->setCollapsible(this->kGitTreeViewIndex, true);
     ui->baseLayout->setAlignment(Qt::AlignTop);
@@ -62,13 +55,8 @@ void SidebarWidget::expandSidebarGit(bool expand)
     expandSidebarWidget(expand, kGitTreeViewIndex);
 }
 
-void SidebarWidget::openProject(const QString &path)
+void SidebarWidget::updateProject(const QString &path)
 {
     ui->fileHeaderWidget->setHeaderTitle(QDir(path).dirName());
     ui->fileTreeView->setProjectPath(path);
-
-    ui->fileHeaderWidget->show();
-    ui->fileTreeView->show();
-    ui->gitHeaderWidget->show();
-    ui->gitTreeView->show();
 }
