@@ -27,7 +27,7 @@ QString ProjectHandler::createProject()
         QDir parent(createProjectDialog->getProjectParentDirPath());
         QString projectName = createProjectDialog->getProjectName();
 
-        if (!parent.exists(projectName) && parent.mkdir(projectName))
+        if (parent.exists(projectName) || parent.mkdir(projectName))
             path = parent.filePath(projectName);
     }
 

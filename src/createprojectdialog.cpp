@@ -51,7 +51,8 @@ void CreateProjectDialog::setProjectName(const QString &name)
 void CreateProjectDialog::selectProjectPath()
 {
     QString path = QFileDialog::getExistingDirectory(
-                this, "Select Project Directory", QDir::homePath());
+                this, "Select Project Directory",
+                this->getProjectParentDirPath());
 
     if (!path.isEmpty()) {
         projectParentDirPath_ = path;
@@ -64,6 +65,11 @@ void CreateProjectDialog::updateProjectPath()
     QDir parent(projectParentDirPath_);
     ui->projectPathEdit->setText(parent.filePath(projectName_));
 
-    bool bIsPathValid = !projectName_.isEmpty() && !parent.exists(projectName_);
-    ui->buttonBox->button(ui->buttonBox->Ok)->setEnabled(bIsPathValid);
+    QString warningMessage;
+    if (!projectName_.isEmpty() && parent.exists(projectName_))
+        warningMessage = "Project already exists! New project files will be "
+                         "added to the existing directory.";
+
+    ui->warningLabel->setText(warningMessage);
+    ui->buttonBox->button(ui->buttonBox->Ok)->setEnabled(!projectName_.isEmpty());
 }

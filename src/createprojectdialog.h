@@ -31,7 +31,7 @@ private:
 
 private:
     Ui::CreateProjectDialog *ui;
-    QString projectParentDirPath_ = QDir::homePath();;
+    QString projectParentDirPath_ = QDir::homePath();
     QString projectName_;
 };
 
